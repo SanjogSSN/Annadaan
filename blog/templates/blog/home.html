@@ -1,0 +1,84 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    {% for message in messages%}
+        <div align="center" class="alert alert-{{message.tags}}">
+            {{message}}
+        </div>
+    {% endfor %}
+    {% if not user.is_staff %}
+        <marquee scrollamount="10" direction="left" height="40px" style="color: firebrick; font: 24px bold Gotham;">To donate food, You need to register as a Donor</marquee>
+    {% endif %}
+    <div class="banner_section layout_padding" style="font-family: Gotham">
+        <div class="container">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" >
+                        <div class="row">
+                            <div class="col-sm-12"><br>
+                                <h1 class="banner_taital">Annadaan</h1>
+                                <p class="banner_text">A Food Donation Portal</p>
+                            </div>
+                            <div class="read_bt"><a href="{% url 'blog-about' %}">Read More</a></div>
+                            
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+
+        <div class="donation_box">
+            <h3 class="donation_taital"><b>Check This Out</b></h3>
+            <div class="fundraise_section">
+                <div class="fundraise_section_main">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="box_main">
+                                <div class="icon_1"><img src="{% static 'blog/images/icon_3.png' %}"></div>
+                                <h4 class="volunteer_text">FOOD BANK</h4>
+                                <p class="lorem_text">Register to join as Food Bank</p>
+                                <div class="join_bt"><a class="nav-link txt_drk" href="{% url 'blog-food_bank' %}">Register Now</a></div><br>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="box_main">
+                                <div class="icon_1"><img src="{% static 'blog/images/icon_2.png' %}"></div>
+                                <h4 class="volunteer_text">Check Status</h4>
+                                <p class="lorem_text">Check status of a request</p>
+                                <div class="join_bt"><a class="nav-link txt_drk" href="{% url 'blog-check_status' %}">Click Here</a></div><br>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="box_main">
+                                <div class="icon_1"><img src="{% static 'blog/images/icon_1.png' %}"></div>
+                                <h4 class="volunteer_text">Check Report</h4>
+                                <p class="lorem_text">Check out Volunteer's reports</p>
+                                <div class="join_bt"><a class="nav-link txt_drk" href="{% url 'blog-vrs' %}">View Report</a></div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <div class="about_section layout_padding" style="background-color:lightgray;">
+        <div>
+            <h3 class="donation_taital"><b>Food Banks Associated with Us</b></h3>
+            <table align="center">
+                <tr>
+                    <th>Food Bank</th>
+                    <th>Location</th>
+                    <th>Contact No.</th>
+                </tr>
+                {% for fb in fbs %}
+                        <tr>
+                            <td>{{fb.name}}</td>
+                            <td>{{fb.location}}</td>
+                            <td>{{fb.incharge}}: {{fb.phone}}</td>
+                        </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        th, td {
+            padding: 10px 15px;
+            text-align: center;
+            color: maroon;
+        }
+    </style>
+    <div class="about_section layout_padding" style="font-family: Gotham; background: linear-gradient(to bottom, #00dddd 0%, #007777 100%); font-size: 26px;">
+        <div class="row" style="padding: 1% 30%;">
+            <div class="mail_section_1">
+                <h3 class="donation_taital"><b>User Profile</b></h3>
+            </div>
+        </div>
+        <table align="center">
+            {% for pro in pros %}
+                <tr><th>Used Id:</th><td>{{pro.id}}<td><tr>
+                <tr><th>Name:</th><td>{{pro.user.first_name}}<td><tr>
+                <tr><th>Address:</th><td>{{pro.address}}<td><tr>
+                <tr><th>Account type:</th><td>{{pro.ptype}}<td><tr>
+                <tr><th>Email:</th><td>{{pro.user.email}}<td><tr>
+                <tr><th>Phone no:</th><td>{{pro.phone}}<td><tr>
+                <tr><th>Username:</th><td>{{pro.user.username}}<td><tr>
+                <tr><th>Change Password:</th><td><button class="donate_bt"><a href="{% url 'blog-change' %}">Click Here</a></button><td><tr>
+                <tr><th>Date joined:</th><td>{{pro.user.date_joined|date:"l, d/F/Y"}}<td><tr>
+                <tr><th>Last login:</th><td>{{pro.user.last_login|date:"l, d/F/Y"}}<td><tr>
+            {% endfor %}
+        </table>
+        <div align="center"><br>
+            {% for pro in pros %}
+                {% if pro.ptype == "Volunteer" %}
+                    <button class="j_bt"><a class="nav-link txt_drk" href="{% url 'blog-onsite' %}">Onsite Processing</a></button>
+                    <button class="j_bt"><a class="nav-link txt_drk" href="{% url 'blog-dp' %}">Donation_Process</a></button>
+                    <button class="j_bt"><a class="nav-link txt_drk" href="{% url 'blog-vol_report' %}">Generate Report</a></button>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

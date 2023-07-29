@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+   <!-- about section start -->
+   <div class="about_section layout_padding" style="background-color: navy;">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-8" style="padding-right: 75px; font-family: Gotham; font-size: 50px;">
+               <h1 class="about_taital">about Annadaan</h1>
+               <p class="about_text">
+                  Food is considered as the basic need for human survival. Moreover, it is the need of every living organism. Therefore, it is important that we should not waste food.<br><br>
+                  Food wastage is a growing global crisis which is affecting the earth and the population inhabiting the entire planet. There are people who find it difficult to afford food for once a day.<br><br>
+                  <span style="font-weight: bold;">Annadaan</span> is an online portal for people to donate left-over food or food that might get wasted. The food will be collected by our volunteer and will be given to needy people or stray animals/ animal shelters depending on the quality of the food. This will help to save food and reduce food wastage. We will try to make sure that food donated here will never wasted.
+               </p>
+            </div>
+            <div class="col-sm-4">
+               <div class="about_img"><img src="{% static 'blog/images/about-img1.jpg' %}"></div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- about section end -->
+{% endblock content %}

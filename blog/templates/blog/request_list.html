@@ -1,0 +1,53 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        table {
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        th, td {
+            border: 0.5px solid black;
+            padding: 10px 20px;
+            text-align: center;
+            color: Red;
+            font-size: 22px;
+        }
+    </style>
+    <div class="about_section layout_padding" style="font-family: Gotham; background-color:lightgray; font-size: 18px;">
+        <div class="row" style="padding: 1% 30%;">
+            <div class="mail_section_1">
+                <h3 class="donation_taital"><b>Pending Request</b></h3>
+            </div>
+        </div>
+        <table border="1px" align="center">
+            <tr>
+                <th>Request id</th>
+                <th>Donor Name</th>
+                <th>Phone No.</th>
+                <th>No. of Items</th>
+                <th>Quantity</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            {% for rq in rqs %}
+                {% if rq.sid.description == 'Requested' %}
+                    <form action="{% url 'blog-accept' %}" method="POST">
+                        <tr>
+                            <td><input name="rid" value="{{rq.id}}" style="background-color:lightgray; color: red; text-align: center; border: 0px; width: 150px;" readonly></td>
+                            <td>{{rq.did.user.first_name}}</td>
+                            <td>{{rq.phone}}</td>
+                            <td>{{rq.food_item}}</td>
+                            <td>{{rq.quantity}}</td>
+                            <td>{{rq.location}}</td>
+                            <td>{{rq.sid.description}}</td>
+                            <td><button type="Submit" class="readmore_bt">Accept</button></td>
+                        </tr>
+                    </form>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}
