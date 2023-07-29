@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+	<div class="form_section" style="font-family: Gotham">
+            <div class="contact_section_2" style="background: linear-gradient(to bottom, #ff9900 0%, #ff6666 100%);">
+                <div class="row" style="padding: 7.5% 30%">
+                    <div class="mail_section_1">
+                        <form name="DUAM" action="{% url 'blog-home' %}" method="POST">
+                            <h1 class="contact_taital" align="center">Give Us Your Feedback</h1>
+                            <input type="text" class="mail_text_1" placeholder="Name" name="fname" required>
+                            <input type="email" class="mail_text_1" placeholder="email" name="email" required>
+                            <input type="textbox" class="mail_text_1" placeholder="message" name="msg" required style="margin-bottom: 20px;">
+                            
+                            <center><button onclick="msg()" class="read_bt"><a>Submit</a></button></center>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock content %}

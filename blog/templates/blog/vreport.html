@@ -1,0 +1,58 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        .rt {
+            border: 4px solid black;
+            border-radius: 5px;
+        }
+
+        .rt th,.rt td {
+            border: solid black;
+            padding: 10px 30px;
+            text-align: center;
+            color: Red;
+            font-size: 22px;
+        }
+    </style>
+	<div class="about_section layout_padding" style="font-family: Gotham; background-color:lightgray; font-size: 20px;">
+        <div class="row" style="padding: 1% 30%;">
+            <div class="mail_section_1">
+                <form action="{% url 'blog-vr' %}" method="POST">
+                    <input type="text" class="mail_text_1" placeholder="Volunteer Id" name="vno" required ><br>
+                    <input type="text" class="mail_text_1" placeholder="Request Id" name="rno" required style="margin-bottom: 20px;"><br>
+                    <center><button class="read_bt" type="Submit"><a>Submit</a></button></center>
+                </form>
+            </div>
+        </div>
+        {% if c != 0 %}
+            <table border="0px" align="center">
+                <tr><th align="center">Total requests handled by volunteer:</th> <td>{{c}}</td></tr>
+            </table><br>
+            {% if n == 0 %}
+                <h1 align="center" style="color:Red; font-size:26px; font-weight:bold;">Report with Request id {{r.id}} not found</h1>
+            {% else %}
+                <table class="rt" align="center">
+                    <tr>
+                        <th>Report Id</th>
+                        <th>Volunteer Name</th>
+                        <th>Location</th>
+                        <th>No. of humans</th>
+                        <th>No. of Animals</th>
+                    </tr>
+                    {% for vr in vrs %}
+                        {% if vr.rid == r %}
+                            <tr>
+                                <td>{{vr.id}}</td>
+                                <td>{{vr.vid.user.first_name}}</td>
+                                <td>{{vr.location}}</td>
+                                <td>{{vr.human}}</td>
+                                <td>{{vr.animal}}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock content %}

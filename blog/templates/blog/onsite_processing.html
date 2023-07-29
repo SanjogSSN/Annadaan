@@ -1,0 +1,44 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <style>
+        th, td {
+            padding: 5px 20px;
+            text-align: left;
+            color: #0f0f0f;
+            font-size: 22px;
+        }
+    </style>
+    <div class="form_section" style="font-family: Gotham">
+        <div class="contact_section_2" style="background: linear-gradient(to bottom, #ff9900 0%, #ff6666 100%);">
+            <div class="row" style="padding: 7.5% 30%">
+                <div class="mail_section_1">
+                    <form action="{% url 'blog-osp' %}" method="POST">  
+                        <h1 class="contact_taital" align="center">Onsite Processing</h1>  
+                        <hr>
+                        <input type="text" class="mail_text_1" name="vname" placeholder= "Volunteer name" required />
+                        <input type="text" class="mail_text_1" name="rid" placeholder= "Request id" required style="margin-bottom: 20px;"/><br>
+                        <table align="center">
+                            <tr>
+                                <th>Visual:</th>
+                                <td><input type="radio" name="vis" value="pass">&nbsp;Pass </td>
+                                <td><input type="radio" name="vis" value="fail">&nbsp;Fail </td>
+                            </tr>
+                            <tr>
+                                <th>Smell:</th>
+                                <td><input type="radio" name="sm" value="pass">&nbsp;Pass </td>
+                                <td><input type="radio" name="sm" value="fail">&nbsp;Fail </td>
+                            </tr>
+                            <tr>
+                                <th>Result:</th>
+                                <td><input type="radio" name="res" value="human">&nbsp;Human</td>
+                                <td><input type="radio" name="res" value="animal">&nbsp;Animal </td>
+                            </tr>
+                        </table><br>
+                        <center><button onclick="{% url 'blog-dp' %}" class="read_bt"><a>Submit</a></button></center>    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

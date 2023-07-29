@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+   <!--  Donation Request -->
+	<div class="form_section" style="font-family: Gotham">
+            <div class="contact_section_2" style="background: linear-gradient(to bottom, #ff9900 0%, #ff6666 100%);">
+                <div class="row" style="padding: 7.5% 30%">
+                    <div class="mail_section_1">
+                        <form name="ReqForm" action="/blog/requested" method="POST">
+                            <h1 class="contact_taital" align="center">Raise Donation Request</h1>
+                            <input type="text" class="mail_text_1" placeholder="Name" name="fname" required>
+                            <input type="number" class="mail_text_1" placeholder="Food items" name="fi" required>
+                            <input type="text" class="mail_text_1" placeholder="Quantity in plates" name="qty" required>
+                            <input type="text" class="mail_text_1" placeholder="Location" name="loc" required>
+                            <input type="text" class="mail_text_1" placeholder="Phone Number" name="num" required style="margin-bottom: 20px;">
+                            
+                            <center><button onclick="requestVal()" class="read_bt"><a>Submit</a></button></center>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+{% endblock content %}

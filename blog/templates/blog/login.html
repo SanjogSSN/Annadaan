@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="form_section" style="font-family: Gotham">
+        <div class="container">
+            {% for message in messages%}
+                <div align="center" class="alert alert-{{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+            <div class="contact_section_2" style="background-color: steelblue;">
+                <div class="row" style="padding: 7.5% 30%">
+                    <div class="mail_section_1">
+                        <form action="{% url 'blog-loggedin' %}" method="POST">
+                            {% csrf_token %}
+                            <h1 class="contact_taital" align="center">Login For Annaadhan</h1>
+                            <input type="text" class="mail_text_1" placeholder="Email" name="username" required>
+                            <input type="password" class="mail_text_1" id="psw" placeholder="Password" name="pass" required>
+                            <label style="color: white;">
+                                <input type="checkbox" onclick="showpass()">&nbsp; Show Password<br>
+                                <input type="checkbox" checked="checked" name="remember">&nbsp; Remember me
+                            </label><br>
+                            <center><button type="submit" class="read_bt"><a>Submit</a></button></center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
