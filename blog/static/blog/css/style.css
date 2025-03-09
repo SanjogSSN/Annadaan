@@ -1106,10 +1106,10 @@ button {
 .social_icon ul {
     margin: 0px;
     padding: 0px;
+    display: flex;
 }
 
 .social_icon li {
-	display: inline;
     padding: 50px 50px 0px 50px;
 	
 }
