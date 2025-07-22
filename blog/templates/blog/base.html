@@ -48,27 +48,31 @@
 		<script src="{% static 'blog/js/owl.carousel.js' %}"></script>
 		<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 	</head>
-	<body style="font-family: Gotham;">
+<body style="font-family: Gotham; min-height: 100vh; display: flex; flex-direction: column;">
 		<header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" href="{% url 'blog-home' %}"><img src="{% static 'blog/images/Logo.png' %}" width="130" height="100"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <form class="form-inline my-2 my-lg-0">
-                            <ul class="navbar-nav flex-grow-1">
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="{% url 'blog-home' %}">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="{% url 'blog-about' %}">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="{% url 'blog-contact_us' %}">Contact Us</a>
-                                </li>
-                                {% if user.is_authenticated%}
+			<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+				<div class="container d-flex">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="{% url 'blog-home' %}"><img src="{% static 'blog/images/Logo.png' %}" width="130" height="100"></a>
+					</div>
+					<div class="navbar-header">
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+					</div>
+					<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+						<form class="form-inline my-2 my-lg-0">
+							<ul class="navbar-nav flex-grow-1">
+								<li class="nav-item">
+									<a class="nav-link text-dark" href="{% url 'blog-home' %}">Home</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-dark" href="{% url 'blog-about' %}">About</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link text-dark" href="{% url 'blog-contact_us' %}">Contact Us</a>
+								</li>
+								{% if user.is_authenticated%}
 									{% if user.is_superuser %}
 										<li class="nav-item">
 											<a class="nav-link text-dark" href="{% url 'blog-requestlist' %}">Requests</a>
@@ -91,27 +95,35 @@
 									<li class="nav-item">
 										<button id="login_bt"><a class="nav-link text-dark" href="{% url 'blog-login' %}">Login</a></button>
 									</li>
-                                {% endif %}
+								{% endif %}
 								</li>
-                            </ul>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </header>
-        {% block content %}{% endblock %}
-		<footer class="footer_section fadjust">
-			<div class="container">
-				<div class="row" align="center">
-					<div class="social_icon">
-						<ul>
-							<li><a href="#"><img src="{% static 'blog/images/fb-icon.png' %}"></a></li>
-							<li><a href="#"><img src="{% static 'blog/images/twitter-icon.png' %}"></a></li>
-							<li><a href="#"><img src="{% static 'blog/images/instagram-icon.png' %}"></a></li>
-						</ul>
+							</ul>
+						</form>
 					</div>
 				</div>
-				<br>&copy; 2021 - Annadaan
+			</nav>
+		</header>
+		<main style="flex: 1 0 auto;">
+			{% block content %}{% endblock %}
+		</main>
+		<footer class="footer_section fadjust mt-auto" style="background: #222; color: #eee;">
+			<div class="container">
+				<div class="row align-items-center text-center">
+					<div class="col-12">
+						<div class="social_icon d-flex justify-content-center mb-2">
+							<ul class="list-inline mb-0">
+								<li class="list-inline-item"><a href="#"><img src="{% static 'blog/images/fb-icon.png' %}" alt="Facebook" class="img-fluid" style="max-width:32px;"></a></li>
+								<li class="list-inline-item"><a href="#"><img src="{% static 'blog/images/twitter-icon.png' %}" alt="Twitter" class="img-fluid" style="max-width:32px;"></a></li>
+								<li class="list-inline-item"><a href="#"><img src="{% static 'blog/images/instagram-icon.png' %}" alt="Instagram" class="img-fluid" style="max-width:32px;"></a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="copyright text-md-end text-right">
+							<p class="mb-0">&copy; {% now "Y" %} - Annadaan</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</footer>
 		
