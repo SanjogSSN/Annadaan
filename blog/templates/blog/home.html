@@ -60,25 +60,31 @@
                 </div>
             </div>
         </div>
-	</div>
+    </div>
 
     <div class="about_section layout_padding" style="background-color:lightgray;">
-        <div>
-            <h3 class="donation_taital"><b>Food Banks Associated with Us</b></h3>
-            <table align="center">
-                <tr>
-                    <th>Food Bank</th>
-                    <th>Location</th>
-                    <th>Contact No.</th>
-                </tr>
-                {% for fb in fbs %}
+        <div class="container py-3">
+            <h3 class="donation_taital text-center"><b>Food Banks Associated with Us</b></h3>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover mb-0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Food Bank</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Contact No.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for fb in fbs %}
                         <tr>
                             <td>{{fb.name}}</td>
                             <td>{{fb.location}}</td>
                             <td>{{fb.incharge}}: {{fb.phone}}</td>
                         </tr>
-                {% endfor %}
-            </table>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 {% endblock content %}

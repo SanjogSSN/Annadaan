@@ -525,6 +525,9 @@ button {
     width: 100%;
     float: left;
     padding-bottom: 90px;
+    min-height: calc(100vh - 180px); /* Adjust 180px to match your header+footer height */
+    margin-bottom: 0 !important;
+    padding-bottom: 50px !important;
 }
 
 .about_img {
@@ -1106,10 +1109,10 @@ button {
 .social_icon ul {
     margin: 0px;
     padding: 0px;
+    display: flex;
 }
 
 .social_icon li {
-	display: inline;
     padding: 50px 50px 0px 50px;
 	
 }
@@ -1126,7 +1129,7 @@ button {
     width: 100%;
     float: left;
     font-size: 17px;
-    color: #afafaf;
+    color: #ffffff;
     margin: 5px 0px;
 }
 
