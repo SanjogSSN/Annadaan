@@ -20,7 +20,6 @@ from blog import views as blog_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blog.urls')),
-    path('blog/', include('blog.urls')),
 ]
 
 handler404 = blog_views.handler404
